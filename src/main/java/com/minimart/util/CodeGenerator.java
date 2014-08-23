@@ -89,9 +89,17 @@ public class CodeGenerator {
 
 			data.put("variableName", getVariableName(modelClass));
 			data.put("className", modelClass);
-			data.put("classNameCapital", modelClass.toUpperCase());
 			data.put("classNamePlural", English.plural(modelClass));
 
+			String dbTableName;
+			try {
+				dbTableName = getTableName((Class<? extends POSModel>) Class.forName(this.modelPackage + "." + modelClass));
+				data.put("dbTableName", dbTableName);
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			generateCRUDQueries(modelClass, data);
 
 			generateServiceInterface(modelClass, data);

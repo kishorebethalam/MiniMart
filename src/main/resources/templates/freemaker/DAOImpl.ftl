@@ -27,7 +27,7 @@ public class ${className}DAOImpl implements ${className}DAO {
         PreparedStatement preparedStatement = null;
         ResultSet generatedKeys = null;
 
-        String query = DBUtil.getQuery("${classNameCapital}_INSERT");
+        String query = DBUtil.getQuery("${dbTableName}_INSERT");
         
         try {
             connection = DBUtil.getConnection();
@@ -58,7 +58,7 @@ public class ${className}DAOImpl implements ${className}DAO {
         PreparedStatement preparedStatement = null;
         ResultSet generatedKeys = null;
 
-        String query = DBUtil.getQuery("${classNameCapital}_UPDATE");
+        String query = DBUtil.getQuery("${dbTableName}_UPDATE");
         
         try {
             connection = DBUtil.getConnection();
@@ -82,7 +82,7 @@ public class ${className}DAOImpl implements ${className}DAO {
         PreparedStatement preparedStatement = null;
         ResultSet generatedKeys = null;
 
-        String query = DBUtil.getQuery("${classNameCapital}_DELETE");
+        String query = DBUtil.getQuery("${dbTableName}_DELETE");
         
         try {
             connection = DBUtil.getConnection();
@@ -102,7 +102,7 @@ public class ${className}DAOImpl implements ${className}DAO {
         
         ${className} ${variableName} = null;
 
-        String query = DBUtil.getQuery("${classNameCapital}_GET_BY_ID");
+        String query = DBUtil.getQuery("${dbTableName}_GET_BY_ID");
         Object[] parameters = {id};
         try {
             connection = DBUtil.getConnection();
@@ -128,7 +128,7 @@ public class ${className}DAOImpl implements ${className}DAO {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         
-        String query = DBUtil.getQuery("${classNameCapital}_GET_ALL");
+        String query = DBUtil.getQuery("${dbTableName}_GET_ALL");
         
         Object[] parameters = {};
         try {

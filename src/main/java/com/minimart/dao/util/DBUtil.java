@@ -39,7 +39,6 @@ public final class DBUtil {
 	public static Connection getConnection() {
 
 		try {
-			System.out.println(dbURL);
 			return DriverManager.getConnection(dbURL);
 		} catch (SQLException e) {
 			e.printStackTrace();

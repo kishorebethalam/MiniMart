@@ -3,8 +3,8 @@ create database pos;
 create table category (
 	id int not null primary key auto_increment,
 	name varchar(128),
-	parent_category_id int not null,
-	foreign key (parent_category_id) references category(id)
+	category_id int not null,
+	foreign key (category_id) references category(id)
 );
 
 create table manufacturer (
@@ -54,3 +54,6 @@ promotional_offer varchar(256),
 	foreign key (product_id) references product(id)
 
 );
+
+insert into manufacturer(id,name) values (1, 'manufacturer1');
+insert into brand (id, manufacturer_id, name) values (1, 1, 'brand1');

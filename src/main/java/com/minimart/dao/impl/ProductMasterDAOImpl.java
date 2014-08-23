@@ -27,7 +27,7 @@ public class ProductMasterDAOImpl implements ProductMasterDAO {
         PreparedStatement preparedStatement = null;
         ResultSet generatedKeys = null;
 
-        String query = DBUtil.getQuery("PRODUCTMASTER_INSERT");
+        String query = DBUtil.getQuery("PRODUCT_MASTER_INSERT");
         
         try {
             connection = DBUtil.getConnection();
@@ -58,7 +58,7 @@ public class ProductMasterDAOImpl implements ProductMasterDAO {
         PreparedStatement preparedStatement = null;
         ResultSet generatedKeys = null;
 
-        String query = DBUtil.getQuery("PRODUCTMASTER_UPDATE");
+        String query = DBUtil.getQuery("PRODUCT_MASTER_UPDATE");
         
         try {
             connection = DBUtil.getConnection();
@@ -82,7 +82,7 @@ public class ProductMasterDAOImpl implements ProductMasterDAO {
         PreparedStatement preparedStatement = null;
         ResultSet generatedKeys = null;
 
-        String query = DBUtil.getQuery("PRODUCTMASTER_DELETE");
+        String query = DBUtil.getQuery("PRODUCT_MASTER_DELETE");
         
         try {
             connection = DBUtil.getConnection();
@@ -102,7 +102,7 @@ public class ProductMasterDAOImpl implements ProductMasterDAO {
         
         ProductMaster productMaster = null;
 
-        String query = DBUtil.getQuery("PRODUCTMASTER_GET_BY_ID");
+        String query = DBUtil.getQuery("PRODUCT_MASTER_GET_BY_ID");
         Object[] parameters = {id};
         try {
             connection = DBUtil.getConnection();
@@ -128,7 +128,7 @@ public class ProductMasterDAOImpl implements ProductMasterDAO {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         
-        String query = DBUtil.getQuery("PRODUCTMASTER_GET_ALL");
+        String query = DBUtil.getQuery("PRODUCT_MASTER_GET_ALL");
         
         Object[] parameters = {};
         try {

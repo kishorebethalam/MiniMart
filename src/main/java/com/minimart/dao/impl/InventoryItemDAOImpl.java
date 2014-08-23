@@ -27,7 +27,7 @@ public class InventoryItemDAOImpl implements InventoryItemDAO {
         PreparedStatement preparedStatement = null;
         ResultSet generatedKeys = null;
 
-        String query = DBUtil.getQuery("INVENTORYITEM_INSERT");
+        String query = DBUtil.getQuery("INVENTORY_ITEM_INSERT");
         
         try {
             connection = DBUtil.getConnection();
@@ -58,7 +58,7 @@ public class InventoryItemDAOImpl implements InventoryItemDAO {
         PreparedStatement preparedStatement = null;
         ResultSet generatedKeys = null;
 
-        String query = DBUtil.getQuery("INVENTORYITEM_UPDATE");
+        String query = DBUtil.getQuery("INVENTORY_ITEM_UPDATE");
         
         try {
             connection = DBUtil.getConnection();
@@ -82,7 +82,7 @@ public class InventoryItemDAOImpl implements InventoryItemDAO {
         PreparedStatement preparedStatement = null;
         ResultSet generatedKeys = null;
 
-        String query = DBUtil.getQuery("INVENTORYITEM_DELETE");
+        String query = DBUtil.getQuery("INVENTORY_ITEM_DELETE");
         
         try {
             connection = DBUtil.getConnection();
@@ -102,7 +102,7 @@ public class InventoryItemDAOImpl implements InventoryItemDAO {
         
         InventoryItem inventoryItem = null;
 
-        String query = DBUtil.getQuery("INVENTORYITEM_GET_BY_ID");
+        String query = DBUtil.getQuery("INVENTORY_ITEM_GET_BY_ID");
         Object[] parameters = {id};
         try {
             connection = DBUtil.getConnection();
@@ -128,7 +128,7 @@ public class InventoryItemDAOImpl implements InventoryItemDAO {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         
-        String query = DBUtil.getQuery("INVENTORYITEM_GET_ALL");
+        String query = DBUtil.getQuery("INVENTORY_ITEM_GET_ALL");
         
         Object[] parameters = {};
         try {
