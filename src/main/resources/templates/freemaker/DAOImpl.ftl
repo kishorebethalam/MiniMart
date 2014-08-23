@@ -17,10 +17,6 @@ public class ${className}DAOImpl implements ${className}DAO {
 	
 	public int add${className}(${className} ${variableName}){
 		
-		if (${variableName}.getId() != null) {
-            throw new IllegalArgumentException("${className} is already created, the ID is not null.");
-        }
-
         Object[] values = ${variableName}.toObjectArray(false);
 
         Connection connection = null;
@@ -88,6 +84,9 @@ public class ${className}DAOImpl implements ${className}DAO {
             connection = DBUtil.getConnection();
             preparedStatement = DBUtil.prepareStatement(connection, query, false, values);
             int affectedRows = preparedStatement.executeUpdate();
+            if (affectedRows == 0) {
+                throw new DAOException("Deleting ${className} failed, no rows affected.");
+            }
         } catch (SQLException e) {
             throw new DAOException(e);
         } finally {

@@ -1,14 +1,11 @@
 package com.minimart.service.impl;
 
-import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.ext.Provider;
 
 import java.util.List;
@@ -26,14 +23,13 @@ public class ProductServiceImpl implements ProductService {
 		this.productDAO = new ProductDAOImpl();
 	}
 	
-	@Path("/")
+	@Path("add")
 	@POST
-	@Consumes(MediaType.APPLICATION_XML)
 	public int addProduct(Product product){
 		return this.productDAO.addProduct(product);
 	}
 	
-	@Path("/")
+	@Path("update")
 	@PUT
 	public void updateProduct(Product product){
 		this.productDAO.updateProduct(product);
@@ -41,13 +37,13 @@ public class ProductServiceImpl implements ProductService {
 	
 	@Path("{id}")
 	@DELETE
-	public void deleteProduct(int id){
+	public void deleteProduct(@PathParam("id") int id){
 		this.productDAO.deleteProduct(id);
 	}
 	
 	@Path("{id}")
 	@GET
-	public Product getProductById(int id){
+	public Product getProductById(@PathParam("id") int id){
 		return this.productDAO.getProductById(id);
 	}
 	

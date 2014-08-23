@@ -16,7 +16,7 @@ public class MinimalServerRest {
     	 sh.setInitParameter("com.sun.jersey.config.property.packages", "com.minimart.service.impl");
     	 sh.setInitParameter("com.sun.jersey.api.json.POJOMappingFeature", "true");
     	 
-         Server server = new Server(9999);
+         Server server = new Server(Integer.parseInt(Configuration.getAppProperty("Port")));
          ServletContextHandler context = new ServletContextHandler(server, "/", ServletContextHandler.SESSIONS);
          context.addServlet(sh, "/*");
          server.start();

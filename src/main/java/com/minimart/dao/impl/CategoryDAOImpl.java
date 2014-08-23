@@ -17,10 +17,6 @@ public class CategoryDAOImpl implements CategoryDAO {
 	
 	public int addCategory(Category category){
 		
-		if (category.getId() != null) {
-            throw new IllegalArgumentException("Category is already created, the ID is not null.");
-        }
-
         Object[] values = category.toObjectArray(false);
 
         Connection connection = null;
@@ -88,6 +84,9 @@ public class CategoryDAOImpl implements CategoryDAO {
             connection = DBUtil.getConnection();
             preparedStatement = DBUtil.prepareStatement(connection, query, false, values);
             int affectedRows = preparedStatement.executeUpdate();
+            if (affectedRows == 0) {
+                throw new DAOException("Deleting Category failed, no rows affected.");
+            }
         } catch (SQLException e) {
             throw new DAOException(e);
         } finally {

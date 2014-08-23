@@ -17,10 +17,6 @@ public class ProductMasterDAOImpl implements ProductMasterDAO {
 	
 	public int addProductMaster(ProductMaster productMaster){
 		
-		if (productMaster.getId() != null) {
-            throw new IllegalArgumentException("ProductMaster is already created, the ID is not null.");
-        }
-
         Object[] values = productMaster.toObjectArray(false);
 
         Connection connection = null;
@@ -88,6 +84,9 @@ public class ProductMasterDAOImpl implements ProductMasterDAO {
             connection = DBUtil.getConnection();
             preparedStatement = DBUtil.prepareStatement(connection, query, false, values);
             int affectedRows = preparedStatement.executeUpdate();
+            if (affectedRows == 0) {
+                throw new DAOException("Deleting ProductMaster failed, no rows affected.");
+            }
         } catch (SQLException e) {
             throw new DAOException(e);
         } finally {

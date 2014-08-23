@@ -5,11 +5,8 @@ import java.util.List;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.webapp.WebAppContext;
 
-import com.minimart.model.Brand;
 import com.minimart.model.Manufacturer;
-import com.minimart.service.BrandService;
 import com.minimart.service.ManufacturerService;
-import com.minimart.service.impl.BrandServiceImpl;
 import com.minimart.service.impl.ManufacturerServiceImpl;
 
 /**

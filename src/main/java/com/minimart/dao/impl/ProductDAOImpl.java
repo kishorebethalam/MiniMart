@@ -17,10 +17,6 @@ public class ProductDAOImpl implements ProductDAO {
 	
 	public int addProduct(Product product){
 		
-		if (product.getId() != null) {
-            throw new IllegalArgumentException("Product is already created, the ID is not null.");
-        }
-
         Object[] values = product.toObjectArray(false);
 
         Connection connection = null;
@@ -88,6 +84,9 @@ public class ProductDAOImpl implements ProductDAO {
             connection = DBUtil.getConnection();
             preparedStatement = DBUtil.prepareStatement(connection, query, false, values);
             int affectedRows = preparedStatement.executeUpdate();
+            if (affectedRows == 0) {
+                throw new DAOException("Deleting Product failed, no rows affected.");
+            }
         } catch (SQLException e) {
             throw new DAOException(e);
         } finally {

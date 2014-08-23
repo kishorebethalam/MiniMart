@@ -1,0 +1,50 @@
+{
+    "Brand": [
+        {
+            "id": 1,
+            "name": "testBrand1",
+            "manufacturer_id": "1"
+        },
+        {
+            "id": 2,
+            "name": "testBrand1",
+            "manufacturer_id": "1"
+        }
+    ],
+    "Manufacturer": [
+        {
+            "id": 1,
+            "name": "Manufacturer1"
+        },
+        {
+            "id": 2,
+            "name": "Manufacturer2"
+        }
+    ],
+    "Category": [
+        {
+            "id": 1,
+            "name": "Category1",
+            "parent_category_id": 0
+        },
+        {
+            "id": 2,
+            "name": "Category2",
+            "parent_category_id": 1
+        }
+    ],
+    "Product": [
+        {
+            "id": 1,
+            "name": "Product1",
+            "category_id": 1,
+            "brand_id": 1
+        },
+        {
+            "id": 2,
+            "name": "Product2",
+            "category_id": 1,
+            "brand_id": 1
+        }
+    ]
+}

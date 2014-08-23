@@ -3,8 +3,7 @@ create database pos;
 create table category (
 	id int not null primary key auto_increment,
 	name varchar(128),
-	category_id int not null,
-	foreign key (category_id) references category(id)
+	parent_category_id int not null default 0
 );
 
 create table manufacturer (

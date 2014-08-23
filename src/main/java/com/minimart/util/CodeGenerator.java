@@ -25,6 +25,7 @@ public class CodeGenerator {
 	
 	private String basePackage;
 	private String srcFolderPath;
+	private String testFolderPath;
 	private String templatesFolderPath;
 
 	private String modelPackage;
@@ -32,6 +33,8 @@ public class CodeGenerator {
 	private String serviceImplPackage;
 	private String daoPackage;
 	private String daoImplPackage;
+	
+	private String serviceTestPackage;
 	
 
 
@@ -43,6 +46,7 @@ public class CodeGenerator {
 		super();
 		this.basePackage = basePackage;
 		this.srcFolderPath = srcFolderPath;
+		this.testFolderPath = srcFolderPath.replace("main","test");
 		this.templatesFolderPath = templatesFolderPath;
 
 		this.modelPackage = this.basePackage + ".model";
@@ -50,6 +54,7 @@ public class CodeGenerator {
 		this.serviceImplPackage = this.basePackage + ".service.impl";
 		this.daoPackage = this.basePackage + ".dao";
 		this.daoImplPackage = this.basePackage + ".dao.impl";
+		this.serviceTestPackage = this.basePackage + ".service";
 	}
 
 	/**
@@ -83,7 +88,8 @@ public class CodeGenerator {
 		data.put("modelPackage", this.modelPackage);
 		data.put("daoPackage", this.daoPackage);
 		data.put("daoImplPackage", this.daoImplPackage);
-
+		data.put("serviceTestPackage", this.serviceTestPackage);
+		
 		
 		for (String modelClass : modelClassesNames) {
 
@@ -106,6 +112,8 @@ public class CodeGenerator {
 			generateServiceImpl(modelClass, data);
 			generateDAOInterface(modelClass, data);
 			generateDAOImpl(modelClass, data);
+			
+			generateServiceTest(modelClass, data);
 
 		}
 		
@@ -187,6 +195,25 @@ public class CodeGenerator {
 			e.printStackTrace();
 		}
 	}
+	
+	private void generateServiceTest(String modelClass, Map<String, Object> data) {
+
+		// Freemarker configuration object
+		Configuration cfg = new Configuration();
+		try {
+			// Load template from source folder
+			Template template = cfg.getTemplate(this.templatesFolderPath + "ServiceTest.ftl");
+
+			generateTestFile(modelClass + "ServiceTest", this.serviceTestPackage, template,
+					data);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (TemplateException e) {
+			e.printStackTrace();
+		}
+	}
+
 
 	public void generateCRUDQueries(String className, Map<String, Object> data) {
 
@@ -283,6 +310,32 @@ public class CodeGenerator {
 		fileWriter.flush();
 		fileWriter.close();
 	}
+	
+	public void generateTestFile(String className, String packageName,
+			Template template, Map<String, Object> data) throws IOException,
+			TemplateException {
+
+
+		String filePath = this.testFolderPath + packageName.replace(".", "/");
+		
+		System.out.println("Generating " + filePath);
+		
+		File parentDirectory = new File(filePath); // will create a sub folder
+													// for each user (currently
+													// does not work, below
+													// hopefully is a solution)
+
+		if (!parentDirectory.exists()) {
+			parentDirectory.mkdirs();
+		}
+
+		Writer fileWriter = new FileWriter(filePath + "/" + className + ".java");
+		template.process(data, fileWriter);
+		fileWriter.flush();
+		fileWriter.close();
+	}
+	
+	
 
 	public static List<Field> getAllFields(Class<?> type) {
 		List<Field> fields = new ArrayList<Field>();

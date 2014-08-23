@@ -1,14 +1,11 @@
 package com.minimart.service.impl;
 
-import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.ext.Provider;
 
 import java.util.List;
@@ -26,14 +23,13 @@ public class CategoryServiceImpl implements CategoryService {
 		this.categoryDAO = new CategoryDAOImpl();
 	}
 	
-	@Path("/")
+	@Path("add")
 	@POST
-	@Consumes(MediaType.APPLICATION_XML)
 	public int addCategory(Category category){
 		return this.categoryDAO.addCategory(category);
 	}
 	
-	@Path("/")
+	@Path("update")
 	@PUT
 	public void updateCategory(Category category){
 		this.categoryDAO.updateCategory(category);
@@ -41,13 +37,13 @@ public class CategoryServiceImpl implements CategoryService {
 	
 	@Path("{id}")
 	@DELETE
-	public void deleteCategory(int id){
+	public void deleteCategory(@PathParam("id") int id){
 		this.categoryDAO.deleteCategory(id);
 	}
 	
 	@Path("{id}")
 	@GET
-	public Category getCategoryById(int id){
+	public Category getCategoryById(@PathParam("id") int id){
 		return this.categoryDAO.getCategoryById(id);
 	}
 	

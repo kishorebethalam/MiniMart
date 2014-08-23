@@ -1,14 +1,11 @@
 package com.minimart.service.impl;
 
-import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.ext.Provider;
 
 import java.util.List;
@@ -26,14 +23,13 @@ public class InventoryItemServiceImpl implements InventoryItemService {
 		this.inventoryItemDAO = new InventoryItemDAOImpl();
 	}
 	
-	@Path("/")
+	@Path("add")
 	@POST
-	@Consumes(MediaType.APPLICATION_XML)
 	public int addInventoryItem(InventoryItem inventoryItem){
 		return this.inventoryItemDAO.addInventoryItem(inventoryItem);
 	}
 	
-	@Path("/")
+	@Path("update")
 	@PUT
 	public void updateInventoryItem(InventoryItem inventoryItem){
 		this.inventoryItemDAO.updateInventoryItem(inventoryItem);
@@ -41,13 +37,13 @@ public class InventoryItemServiceImpl implements InventoryItemService {
 	
 	@Path("{id}")
 	@DELETE
-	public void deleteInventoryItem(int id){
+	public void deleteInventoryItem(@PathParam("id") int id){
 		this.inventoryItemDAO.deleteInventoryItem(id);
 	}
 	
 	@Path("{id}")
 	@GET
-	public InventoryItem getInventoryItemById(int id){
+	public InventoryItem getInventoryItemById(@PathParam("id") int id){
 		return this.inventoryItemDAO.getInventoryItemById(id);
 	}
 	

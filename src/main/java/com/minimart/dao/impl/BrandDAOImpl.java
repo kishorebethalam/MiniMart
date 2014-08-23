@@ -17,10 +17,6 @@ public class BrandDAOImpl implements BrandDAO {
 	
 	public int addBrand(Brand brand){
 		
-		if (brand.getId() != null) {
-            throw new IllegalArgumentException("Brand is already created, the ID is not null.");
-        }
-
         Object[] values = brand.toObjectArray(false);
 
         Connection connection = null;
@@ -88,6 +84,9 @@ public class BrandDAOImpl implements BrandDAO {
             connection = DBUtil.getConnection();
             preparedStatement = DBUtil.prepareStatement(connection, query, false, values);
             int affectedRows = preparedStatement.executeUpdate();
+            if (affectedRows == 0) {
+                throw new DAOException("Deleting Brand failed, no rows affected.");
+            }
         } catch (SQLException e) {
             throw new DAOException(e);
         } finally {

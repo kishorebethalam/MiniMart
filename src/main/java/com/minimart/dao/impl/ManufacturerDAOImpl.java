@@ -17,10 +17,6 @@ public class ManufacturerDAOImpl implements ManufacturerDAO {
 	
 	public int addManufacturer(Manufacturer manufacturer){
 		
-		if (manufacturer.getId() != null) {
-            throw new IllegalArgumentException("Manufacturer is already created, the ID is not null.");
-        }
-
         Object[] values = manufacturer.toObjectArray(false);
 
         Connection connection = null;
@@ -88,6 +84,9 @@ public class ManufacturerDAOImpl implements ManufacturerDAO {
             connection = DBUtil.getConnection();
             preparedStatement = DBUtil.prepareStatement(connection, query, false, values);
             int affectedRows = preparedStatement.executeUpdate();
+            if (affectedRows == 0) {
+                throw new DAOException("Deleting Manufacturer failed, no rows affected.");
+            }
         } catch (SQLException e) {
             throw new DAOException(e);
         } finally {

@@ -17,10 +17,6 @@ public class InventoryItemDAOImpl implements InventoryItemDAO {
 	
 	public int addInventoryItem(InventoryItem inventoryItem){
 		
-		if (inventoryItem.getId() != null) {
-            throw new IllegalArgumentException("InventoryItem is already created, the ID is not null.");
-        }
-
         Object[] values = inventoryItem.toObjectArray(false);
 
         Connection connection = null;
@@ -88,6 +84,9 @@ public class InventoryItemDAOImpl implements InventoryItemDAO {
             connection = DBUtil.getConnection();
             preparedStatement = DBUtil.prepareStatement(connection, query, false, values);
             int affectedRows = preparedStatement.executeUpdate();
+            if (affectedRows == 0) {
+                throw new DAOException("Deleting InventoryItem failed, no rows affected.");
+            }
         } catch (SQLException e) {
             throw new DAOException(e);
         } finally {
