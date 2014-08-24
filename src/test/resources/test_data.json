@@ -1,50 +1,64 @@
 {
     "Brand": [
         {
-            "id": 1,
             "name": "testBrand1",
-            "manufacturer_id": "1"
+            "manufacturerId": 1
         },
         {
-            "id": 2,
             "name": "testBrand1",
-            "manufacturer_id": "1"
+            "manufacturerId": 1
         }
     ],
     "Manufacturer": [
         {
-            "id": 1,
             "name": "Manufacturer1"
         },
         {
-            "id": 2,
             "name": "Manufacturer2"
         }
     ],
     "Category": [
         {
-            "id": 1,
             "name": "Category1",
-            "parent_category_id": 0
+            "parentCategoryId": 1
         },
         {
-            "id": 2,
             "name": "Category2",
-            "parent_category_id": 1
+            "parentCategoryId": 1
         }
     ],
     "Product": [
         {
-            "id": 1,
-            "name": "Product1",
-            "category_id": 1,
-            "brand_id": 1
+            "productMasterId": 1,
+            "measurementCategory": "Units",
+            "measurementQuanity": 5,
+            "mrp": 100,
+            "sellPrice": 115,
+            "buyPrice": 75,
+            "reorderVolume": 1,
+            "reorderFrequency": '1 Week'
         },
         {
-            "id": 2,
+            "productMasterId": 1,
+            "measurementCategory": "Units",
+            "measurementQuanity": 15,
+            "mrp": 300,
+            "sellPrice": 355,
+            "buyPrice": 225,
+            "reorderVolume": 1,
+            "reorderFrequency": '1 Week'
+        }
+    ],
+    "ProductMaster": [
+        {
+            "name": "Product1",
+            "categoryId": 1,
+            "brandId": 1
+        },
+        {
             "name": "Product2",
-            "category_id": 1,
-            "brand_id": 1
+            "categoryId": 1,
+            "brandId": 1
         }
     ]
 }

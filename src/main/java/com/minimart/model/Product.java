@@ -19,32 +19,32 @@ public class Product extends POSModel implements java.io.Serializable {
 
 
 
-	@POSFieldAnnotation(dbColumnName = "id", jsonColumnName = "id")
+	@POSFieldAnnotation(dbColumnName = "id")
 	private Integer id;
 
-	@POSFieldAnnotation(dbColumnName = "product_master_id", jsonColumnName = "product_master_id")
+	@POSFieldAnnotation(dbColumnName = "product_master_id")
 	private Integer productMasterId;
 
-	@POSFieldAnnotation(dbColumnName = "measurement_category", jsonColumnName = "measurement_category")
+	@POSFieldAnnotation(dbColumnName = "measurement_category")
 	private String measurementCategory;
 
-	@POSFieldAnnotation(dbColumnName = "measurement_quantity", jsonColumnName = "measurement_quantity")
+	@POSFieldAnnotation(dbColumnName = "measurement_quantity")
 	private int measurementQuantity;
 
-	@POSFieldAnnotation(dbColumnName = "mrp", jsonColumnName = "mrp")
+	@POSFieldAnnotation(dbColumnName = "mrp")
 	private float mrp;
 
-	@POSFieldAnnotation(dbColumnName = "selling_price", jsonColumnName = "selling_price")
-	private float sellingPrice;
+	@POSFieldAnnotation(dbColumnName = "sell_price")
+	private float sellPrice;
 
-	@POSFieldAnnotation(dbColumnName = "bought_price", jsonColumnName = "bought_price")
-	private float boughtPrice;
+	@POSFieldAnnotation(dbColumnName = "buy_price")
+	private float buyPrice;
 
-	@POSFieldAnnotation(dbColumnName = "reorder_volume", jsonColumnName = "reorder_volume")
+	@POSFieldAnnotation(dbColumnName = "reorder_volume")
 	private int reorderVolume;
 
-	@POSFieldAnnotation(dbColumnName = "reorder_frequency", jsonColumnName = "reorder_frequency")
-	private int reorderFrequency;
+	@POSFieldAnnotation(dbColumnName = "reorder_frequency")
+	private String reorderFrequency;
 
 	/**
 	 * @return the id
@@ -121,34 +121,34 @@ public class Product extends POSModel implements java.io.Serializable {
 		this.mrp = mrp;
 	}
 
+	
+
 	/**
-	 * @return the sellingPrice
+	 * @return the sellPrice
 	 */
-	public float getSellingPrice() {
-		return sellingPrice;
+	public float getSellPrice() {
+		return sellPrice;
 	}
 
 	/**
-	 * @param sellingPrice
-	 *            the sellingPrice to set
+	 * @param sellPrice the sellPrice to set
 	 */
-	public void setSellingPrice(float sellingPrice) {
-		this.sellingPrice = sellingPrice;
+	public void setSellPrice(float sellPrice) {
+		this.sellPrice = sellPrice;
 	}
 
 	/**
-	 * @return the boughtPrice
+	 * @return the buyPrice
 	 */
-	public float getBoughtPrice() {
-		return boughtPrice;
+	public float getBuyPrice() {
+		return buyPrice;
 	}
 
 	/**
-	 * @param boughtPrice
-	 *            the boughtPrice to set
+	 * @param buyPrice the buyPrice to set
 	 */
-	public void setBoughtPrice(float boughtPrice) {
-		this.boughtPrice = boughtPrice;
+	public void setBuyPrice(float buyPrice) {
+		this.buyPrice = buyPrice;
 	}
 
 	/**
@@ -169,7 +169,7 @@ public class Product extends POSModel implements java.io.Serializable {
 	/**
 	 * @return the reorderFrequency
 	 */
-	public int getReorderFrequency() {
+	public String getReorderFrequency() {
 		return reorderFrequency;
 	}
 
@@ -177,7 +177,7 @@ public class Product extends POSModel implements java.io.Serializable {
 	 * @param reorderFrequency
 	 *            the reorderFrequency to set
 	 */
-	public void setReorderFrequency(int reorderFrequency) {
+	public void setReorderFrequency(String reorderFrequency) {
 		this.reorderFrequency = reorderFrequency;
 	}
 
@@ -192,14 +192,14 @@ public class Product extends POSModel implements java.io.Serializable {
 	@Override
 	public void loadFromResultSet(ResultSet resultSet) throws SQLException {
 		this.id = resultSet.getInt("id");
-		this.productMasterId = resultSet.getInt("id");
+		this.productMasterId = resultSet.getInt("product_master_id");
 		this.measurementCategory= resultSet.getString("measurement_category"); 
 		this.measurementQuantity = resultSet.getInt("measurement_quantity");
 		this.mrp = resultSet.getFloat("mrp");
-		this.sellingPrice = resultSet.getFloat("selling_price");
-		this.boughtPrice = resultSet.getFloat("bought_price");
+		this.sellPrice = resultSet.getFloat("sell_price");
+		this.buyPrice = resultSet.getFloat("buy_price");
 		this.reorderVolume = resultSet.getInt("reorder_volume");
-		this.reorderFrequency = resultSet.getInt("reorder_frequency");
+		this.reorderFrequency = resultSet.getString("reorder_frequency");
 	}
 
 	@Override
@@ -208,14 +208,118 @@ public class Product extends POSModel implements java.io.Serializable {
 		if (includeId) {
 			Object[] params = { this.productMasterId,
 					this.measurementCategory, this.measurementQuantity,
-					this.mrp, this.sellingPrice, this.boughtPrice,
+					this.mrp, this.sellPrice, this.buyPrice,
 					this.reorderVolume, this.reorderFrequency, this.id };
 			return params;
 		} else {
 			Object[] params = { this.productMasterId, this.measurementCategory,
-					this.measurementQuantity, this.mrp, this.sellingPrice,
-					this.boughtPrice, this.reorderVolume, this.reorderFrequency };
+					this.measurementQuantity, this.mrp, this.sellPrice,
+					this.buyPrice, this.reorderVolume, this.reorderFrequency };
 			return params;
 		}
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Float.floatToIntBits(buyPrice);
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime
+				* result
+				+ ((measurementCategory == null) ? 0 : measurementCategory
+						.hashCode());
+		result = prime * result + measurementQuantity;
+		result = prime * result + Float.floatToIntBits(mrp);
+		result = prime * result
+				+ ((productMasterId == null) ? 0 : productMasterId.hashCode());
+		result = prime
+				* result
+				+ ((reorderFrequency == null) ? 0 : reorderFrequency.hashCode());
+		result = prime * result + reorderVolume;
+		result = prime * result + Float.floatToIntBits(sellPrice);
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		System.out.println("Comparing " + this.toString() + " against " + ((Product)obj).toString());
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof Product)) {
+			return false;
+		}
+		Product other = (Product) obj;
+		if (Float.floatToIntBits(buyPrice) != Float
+				.floatToIntBits(other.buyPrice)) {
+			return false;
+		}
+		if (id == null) {
+			if (other.id != null) {
+				return false;
+			}
+		} else if (!id.equals(other.id)) {
+			return false;
+		}
+		if (measurementCategory == null) {
+			if (other.measurementCategory != null) {
+				return false;
+			}
+		} else if (!measurementCategory.equals(other.measurementCategory)) {
+			return false;
+		}
+		if (measurementQuantity != other.measurementQuantity) {
+			return false;
+		}
+		if (Float.floatToIntBits(mrp) != Float.floatToIntBits(other.mrp)) {
+			return false;
+		}
+		if (productMasterId == null) {
+			if (other.productMasterId != null) {
+				return false;
+			}
+		} else if (!productMasterId.equals(other.productMasterId)) {
+			return false;
+		}
+		if (reorderFrequency == null) {
+			if (other.reorderFrequency != null) {
+				return false;
+			}
+		} else if (!reorderFrequency.equals(other.reorderFrequency)) {
+			return false;
+		}
+		if (reorderVolume != other.reorderVolume) {
+			return false;
+		}
+		if (Float.floatToIntBits(sellPrice) != Float
+				.floatToIntBits(other.sellPrice)) {
+			return false;
+		}
+		return true;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", productMasterId=" + productMasterId
+				+ ", measurementCategory=" + measurementCategory
+				+ ", measurementQuantity=" + measurementQuantity + ", mrp="
+				+ mrp + ", sellPrice=" + sellPrice + ", buyPrice=" + buyPrice
+				+ ", reorderVolume=" + reorderVolume + ", reorderFrequency="
+				+ reorderFrequency + "]";
+	}
+	
+	
 }

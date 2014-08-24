@@ -19,16 +19,16 @@ public class ProductMaster extends POSModel implements java.io.Serializable {
 
 	
 
-	@POSFieldAnnotation(dbColumnName = "id", jsonColumnName = "id")
+	@POSFieldAnnotation(dbColumnName = "id")
 	private Integer id;
 
-	@POSFieldAnnotation(dbColumnName = "brand_id", jsonColumnName = "brand_id")
+	@POSFieldAnnotation(dbColumnName = "brand_id")
 	private Integer brandId;
 
-	@POSFieldAnnotation(dbColumnName = "category_id", jsonColumnName = "category_id")
+	@POSFieldAnnotation(dbColumnName = "category_id")
 	private Integer categoryId;
 
-	@POSFieldAnnotation(dbColumnName = "name", jsonColumnName = "name")
+	@POSFieldAnnotation(dbColumnName = "name")
 	private String name;
 
 	/**
@@ -114,5 +114,67 @@ public class ProductMaster extends POSModel implements java.io.Serializable {
 			return params;
 		}
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((brandId == null) ? 0 : brandId.hashCode());
+		result = prime * result
+				+ ((categoryId == null) ? 0 : categoryId.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof ProductMaster)) {
+			return false;
+		}
+		ProductMaster other = (ProductMaster) obj;
+		if (brandId == null) {
+			if (other.brandId != null) {
+				return false;
+			}
+		} else if (!brandId.equals(other.brandId)) {
+			return false;
+		}
+		if (categoryId == null) {
+			if (other.categoryId != null) {
+				return false;
+			}
+		} else if (!categoryId.equals(other.categoryId)) {
+			return false;
+		}
+		if (id == null) {
+			if (other.id != null) {
+				return false;
+			}
+		} else if (!id.equals(other.id)) {
+			return false;
+		}
+		if (name == null) {
+			if (other.name != null) {
+				return false;
+			}
+		} else if (!name.equals(other.name)) {
+			return false;
+		}
+		return true;
+	}
+	
 	
 }

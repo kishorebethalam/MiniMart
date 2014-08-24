@@ -149,7 +149,7 @@
           <manifest>
             <addClasspath>true</addClasspath>
             <classpathPrefix>lib/</classpathPrefix>
-            <mainClass>com.minimart.Main</mainClass>
+            <mainClass>com.minimart.MinimalServerRest</mainClass>
           </manifest>
         </archive>
       </configuration>

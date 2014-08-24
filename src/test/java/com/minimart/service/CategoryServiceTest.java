@@ -36,9 +36,12 @@ public class CategoryServiceTest {
 		for (POSModel model : testCategories) {
 			Category category = (Category) model;
 			int generatedCategoryId = service.addCategory(category);
+			System.out.println("Generated CategoryID:" + generatedCategoryId);
 
 			//Ensure that it's inserted properly by retrieving and verifying it.
 			Category fetchCategory = service.getCategoryById(generatedCategoryId);
+			System.out.println("fetchCategory CategoryID:" + fetchCategory.getId());
+
 			assertEquals(category, fetchCategory);
 		}
 		

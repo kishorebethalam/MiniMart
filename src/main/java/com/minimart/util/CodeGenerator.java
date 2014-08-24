@@ -254,7 +254,7 @@ public class CodeGenerator {
 					try {
 						POSFieldAnnotation fieldAnnotation = field
 								.getAnnotation(POSFieldAnnotation.class);
-						String jsonKey = fieldAnnotation.jsonColumnName();
+						String jsonKey = field.getName();
 						String dbKey = fieldAnnotation.dbColumnName();
 						Object[] fieldInfo = new Object[3];
 						fieldInfo[0] = field.getName();

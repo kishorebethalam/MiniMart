@@ -18,28 +18,25 @@ import com.minimart.annotation.POSModelAnnotation;
 @XmlRootElement
 public class InventoryItem extends POSModel implements java.io.Serializable {
 
-	@POSFieldAnnotation(dbColumnName = "id", jsonColumnName = "id")
+	@POSFieldAnnotation(dbColumnName = "id")
 	private Integer id;
 
-	@POSFieldAnnotation(dbColumnName = "product_id", jsonColumnName = "product_id")
+	@POSFieldAnnotation(dbColumnName = "product_id")
 	private Integer productId;
 
-	@POSFieldAnnotation(dbColumnName = "name", jsonColumnName = "name")
-	private String name;
-	
-	@POSFieldAnnotation(dbColumnName = "tracking_code", jsonColumnName = "tracking_code")
+	@POSFieldAnnotation(dbColumnName = "tracking_code")
 	private String trackingCode;
 	
-	@POSFieldAnnotation(dbColumnName = "quantity", jsonColumnName = "quantity")
+	@POSFieldAnnotation(dbColumnName = "quantity")
 	private int quantity;
 
-	@POSFieldAnnotation(dbColumnName = "received_date", jsonColumnName = "received_date")
+	@POSFieldAnnotation(dbColumnName = "received_date")
 	private Date receivedDate;
 
-	@POSFieldAnnotation(dbColumnName = "expiry_date", jsonColumnName = "expiry_date")
+	@POSFieldAnnotation(dbColumnName = "expiry_date")
 	private Date expiryDate;
 	
-	@POSFieldAnnotation(dbColumnName = "promotional_offer", jsonColumnName = "promotional_offer")
+	@POSFieldAnnotation(dbColumnName = "promotional_offer")
 	private String promotionalOffer;
 
 	/**
@@ -68,20 +65,6 @@ public class InventoryItem extends POSModel implements java.io.Serializable {
 	 */
 	public void setProductId(Integer productId) {
 		this.productId = productId;
-	}
-
-	/**
-	 * @return the name
-	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * @param name the name to set
-	 */
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	/**
@@ -167,7 +150,6 @@ public class InventoryItem extends POSModel implements java.io.Serializable {
 		
 		this.id = resultSet.getInt("id");
 		this.productId = resultSet.getInt("product_id");
-		this.name = resultSet.getString("name");
 		this.trackingCode = resultSet.getString("tracking_code");
 		this.quantity = resultSet.getInt("quantity");
 		this.receivedDate = resultSet.getDate("received_date");
@@ -179,11 +161,99 @@ public class InventoryItem extends POSModel implements java.io.Serializable {
 	public Object[] toObjectArray(boolean includeId) {
 
 		if (includeId) {
-			Object[] params = { this.productId, this.name, this.trackingCode, this.quantity, this.receivedDate, this.expiryDate, this.promotionalOffer, this.id};
+			Object[] params = { this.productId, this.trackingCode, this.quantity, this.receivedDate, this.expiryDate, this.promotionalOffer, this.id};
 			return params;
 		} else {
-			Object[] params = { this.productId, this.name, this.trackingCode, this.quantity, this.receivedDate, this.expiryDate, this.promotionalOffer};
+			Object[] params = { this.productId, this.trackingCode, this.quantity, this.receivedDate, this.expiryDate, this.promotionalOffer};
 			return params;
 		}
-	}	
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((expiryDate == null) ? 0 : expiryDate.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result
+				+ ((productId == null) ? 0 : productId.hashCode());
+		result = prime
+				* result
+				+ ((promotionalOffer == null) ? 0 : promotionalOffer.hashCode());
+		result = prime * result + quantity;
+		result = prime * result
+				+ ((receivedDate == null) ? 0 : receivedDate.hashCode());
+		result = prime * result
+				+ ((trackingCode == null) ? 0 : trackingCode.hashCode());
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof InventoryItem)) {
+			return false;
+		}
+		InventoryItem other = (InventoryItem) obj;
+		if (expiryDate == null) {
+			if (other.expiryDate != null) {
+				return false;
+			}
+		} else if (!expiryDate.equals(other.expiryDate)) {
+			return false;
+		}
+		if (id == null) {
+			if (other.id != null) {
+				return false;
+			}
+		} else if (!id.equals(other.id)) {
+			return false;
+		}
+		if (productId == null) {
+			if (other.productId != null) {
+				return false;
+			}
+		} else if (!productId.equals(other.productId)) {
+			return false;
+		}
+		if (promotionalOffer == null) {
+			if (other.promotionalOffer != null) {
+				return false;
+			}
+		} else if (!promotionalOffer.equals(other.promotionalOffer)) {
+			return false;
+		}
+		if (quantity != other.quantity) {
+			return false;
+		}
+		if (receivedDate == null) {
+			if (other.receivedDate != null) {
+				return false;
+			}
+		} else if (!receivedDate.equals(other.receivedDate)) {
+			return false;
+		}
+		if (trackingCode == null) {
+			if (other.trackingCode != null) {
+				return false;
+			}
+		} else if (!trackingCode.equals(other.trackingCode)) {
+			return false;
+		}
+		return true;
+	}
+	
+	
 }

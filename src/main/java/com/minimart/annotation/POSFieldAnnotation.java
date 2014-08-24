@@ -14,5 +14,4 @@ import java.lang.annotation.ElementType;
 
 public @interface POSFieldAnnotation {
 	String dbColumnName();
-	String jsonColumnName();
 }

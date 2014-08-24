@@ -17,13 +17,13 @@ import com.minimart.annotation.POSModelAnnotation;
 @POSModelAnnotation(dbTableName = "BRAND")
 public class Brand extends POSModel implements java.io.Serializable {
 
-	@POSFieldAnnotation(dbColumnName = "id", jsonColumnName = "id")
+	@POSFieldAnnotation(dbColumnName = "id")
 	private Integer id;
 
-	@POSFieldAnnotation(dbColumnName = "manufacturer_id", jsonColumnName = "manufacturer_id")
+	@POSFieldAnnotation(dbColumnName = "manufacturer_id")
 	private Integer manufacturerId;
 
-	@POSFieldAnnotation(dbColumnName = "name", jsonColumnName = "name")
+	@POSFieldAnnotation(dbColumnName = "name")
 	private String name;
 
 	/**

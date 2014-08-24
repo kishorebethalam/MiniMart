@@ -28,7 +28,7 @@ public class POSModelFactory {
 					try {
 						POSFieldAnnotation fieldAnnotation = field
 								.getAnnotation(POSFieldAnnotation.class);
-						String jsonKey = fieldAnnotation.jsonColumnName();
+						String jsonKey = field.getName();
 						Object value = null;
 
 						if (jsonObject.has(jsonKey)) {

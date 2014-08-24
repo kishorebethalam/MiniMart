@@ -64,8 +64,8 @@ public class TestDataUtil {
 			testData.put(className, modelObjects);
 		}
 		
-		System.out.println("No of items in testData" + testData.size());
-		System.out.println(dataJSON.toString());
+//		System.out.println("No of items in testData" + testData.size());
+//		System.out.println(dataJSON.toString());
 	}
 
 	private static String readFile(String filename) {
@@ -73,7 +73,7 @@ public class TestDataUtil {
 		String resourcesPath = Configuration.getAppProperty("RootDirectory") + "/src/test/resources";
 		String filePath = resourcesPath + File.separator + filename;
 		
-		System.out.println("Trying to import " + filePath);
+//		System.out.println("Trying to import " + filePath);
 		File file = new File(filePath); // for ex foo.txt
 		try {
 			FileReader reader = new FileReader(file);
@@ -84,7 +84,7 @@ public class TestDataUtil {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		System.out.println("Content: " + content);
+//		System.out.println("Content: " + content);
 		return content;
 	}
 }
