@@ -28,7 +28,6 @@ public class CategoryServiceTest {
 		//Get the list of items to be used for testing.
 		List<POSModel> testCategories = TestDataUtil.getTestData("Category");
 		if (testCategories == null || testCategories.size() ==0) {
-			//If no test data is supplied, treat it as test failure.
 			assertEquals(true, false);
 		}
 		
@@ -59,4 +58,7 @@ public class CategoryServiceTest {
 		List<Category> allItemsAfterDelete = service.getAllCategories();
 		assertEquals(allItemsAfterDelete.size(), originalItems.size());
 	}
+	
+	
+
 }

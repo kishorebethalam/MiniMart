@@ -1,5 +1,5 @@
 create database pos;
-
+connect pos;
 create table category (
 	id int not null primary key auto_increment,
 	name varchar(128),
