@@ -19,6 +19,38 @@ public class Product extends POSModel implements java.io.Serializable {
 
 
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6585060348438408397L;
+
+	/**
+	 * @param id
+	 * @param productMasterId
+	 * @param measurementCategory
+	 * @param measurementQuantity
+	 * @param mrp
+	 * @param sellPrice
+	 * @param buyPrice
+	 * @param reorderVolume
+	 * @param reorderFrequency
+	 */
+	public Product(Integer id, Integer productMasterId,
+			String measurementCategory, int measurementQuantity, float mrp,
+			float sellPrice, float buyPrice, int reorderVolume,
+			String reorderFrequency) {
+		super();
+		this.id = id;
+		this.productMasterId = productMasterId;
+		this.measurementCategory = measurementCategory;
+		this.measurementQuantity = measurementQuantity;
+		this.mrp = mrp;
+		this.sellPrice = sellPrice;
+		this.buyPrice = buyPrice;
+		this.reorderVolume = reorderVolume;
+		this.reorderFrequency = reorderFrequency;
+	}
+
 	@POSFieldAnnotation(dbColumnName = "id")
 	private Integer id;
 

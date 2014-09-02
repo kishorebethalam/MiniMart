@@ -2,6 +2,7 @@ package com.minimart.model;
 
 // Generated Aug 12, 2014 10:36:52 PM by Hibernate Tools 3.4.0.CR1
 
+import java.io.OutputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -16,6 +17,23 @@ import com.minimart.annotation.POSModelAnnotation;
 @XmlRootElement
 @POSModelAnnotation(dbTableName = "BRAND")
 public class Brand extends POSModel implements java.io.Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * @param id
+	 * @param manufacturerId
+	 * @param name
+	 */
+	public Brand(Integer id, Integer manufacturerId, String name) {
+		super();
+		this.id = id;
+		this.manufacturerId = manufacturerId;
+		this.name = name;
+	}
 
 	@POSFieldAnnotation(dbColumnName = "id")
 	private Integer id;
@@ -160,6 +178,11 @@ public class Brand extends POSModel implements java.io.Serializable {
 			return false;
 		}
 		return true;
+	}
+
+	public void serialize(OutputStream entityStream) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

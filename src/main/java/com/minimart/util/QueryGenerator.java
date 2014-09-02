@@ -18,8 +18,8 @@ public class QueryGenerator {
 	private static Properties queryProperties;
 	private static String queryFilePath = "test";
 
-	public QueryGenerator(String queryFilePath) {
-		this.queryFilePath = queryFilePath;
+	public QueryGenerator(String queryFilePathArg) {
+		queryFilePath = queryFilePathArg;
 	}
 
 	public static void startGeneration(String queryFilePathArg){

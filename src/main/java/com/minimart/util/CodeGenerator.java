@@ -79,6 +79,7 @@ public class CodeGenerator {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	public void generateCode(List<String> modelClassesNames) {
 
 		// Build the data-model
@@ -247,14 +248,12 @@ public class CodeGenerator {
 
 		try {
 
-			Object entity = modelClass.newInstance();
 
 			for (Field field : CodeGenerator.getAllFields(modelClass)) {
 				if (field.isAnnotationPresent(POSFieldAnnotation.class)) {
 					try {
 						POSFieldAnnotation fieldAnnotation = field
 								.getAnnotation(POSFieldAnnotation.class);
-						String jsonKey = field.getName();
 						String dbKey = fieldAnnotation.dbColumnName();
 						Object[] fieldInfo = new Object[3];
 						fieldInfo[0] = field.getName();

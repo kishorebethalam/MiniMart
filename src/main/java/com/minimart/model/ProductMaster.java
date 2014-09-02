@@ -19,6 +19,26 @@ public class ProductMaster extends POSModel implements java.io.Serializable {
 
 	
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3897843879939920209L;
+
+	/**
+	 * @param id
+	 * @param brandId
+	 * @param categoryId
+	 * @param name
+	 */
+	public ProductMaster(Integer id, Integer brandId, Integer categoryId,
+			String name) {
+		super();
+		this.id = id;
+		this.brandId = brandId;
+		this.categoryId = categoryId;
+		this.name = name;
+	}
+
 	@POSFieldAnnotation(dbColumnName = "id")
 	private Integer id;
 

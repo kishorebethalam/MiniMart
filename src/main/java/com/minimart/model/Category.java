@@ -17,6 +17,23 @@ import com.minimart.annotation.POSModelAnnotation;
 @XmlRootElement
 public class Category extends POSModel implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * @param id
+	 * @param parentCategoryId
+	 * @param name
+	 */
+	public Category(Integer id, Integer parentCategoryId, String name) {
+		super();
+		this.id = id;
+		this.parentCategoryId = parentCategoryId;
+		this.name = name;
+	}
+
 	@POSFieldAnnotation(dbColumnName = "id")
 	private Integer id;
 

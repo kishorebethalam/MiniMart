@@ -17,6 +17,21 @@ import com.minimart.annotation.POSModelAnnotation;
 @XmlRootElement
 public class Manufacturer extends POSModel implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 699390823557212736L;
+
+	/**
+	 * @param id
+	 * @param name
+	 */
+	public Manufacturer(Integer id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
+
 	@POSFieldAnnotation(dbColumnName = "id")
 	private Integer id;
 
@@ -120,6 +135,14 @@ public class Manufacturer extends POSModel implements java.io.Serializable {
 			return false;
 		}
 		return true;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Manufacturer [id=" + id + ", name=" + name + "]";
 	}
 
 	

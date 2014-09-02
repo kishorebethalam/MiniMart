@@ -7,6 +7,9 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.ext.Provider;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.Consumes;
 
 import java.util.List;
 import com.minimart.model.InventoryItem;
@@ -25,12 +28,14 @@ public class InventoryItemServiceImpl implements InventoryItemService {
 	
 	@Path("add")
 	@POST
+	@Consumes( MediaType.APPLICATION_JSON)
 	public int addInventoryItem(InventoryItem inventoryItem){
 		return this.inventoryItemDAO.addInventoryItem(inventoryItem);
 	}
 	
 	@Path("update")
 	@PUT
+	@Consumes( MediaType.APPLICATION_JSON)
 	public void updateInventoryItem(InventoryItem inventoryItem){
 		this.inventoryItemDAO.updateInventoryItem(inventoryItem);
 	}
@@ -43,18 +48,21 @@ public class InventoryItemServiceImpl implements InventoryItemService {
 	
 	@Path("{id}")
 	@GET
+	@Produces( MediaType.APPLICATION_JSON)
 	public InventoryItem getInventoryItemById(@PathParam("id") int id){
 		return this.inventoryItemDAO.getInventoryItemById(id);
 	}
 	
 	@Path("all")
 	@GET
+	@Produces( MediaType.APPLICATION_JSON)
 	public List<InventoryItem> getAllInventoryItems(){
 		return this.inventoryItemDAO.getAllInventoryItems();
 	}
 	
 	@Path("search")
 	@POST
+	@Produces( MediaType.APPLICATION_JSON)
 	public List<InventoryItem> getInventoryItemsByCriteria(Object criterion){
 		return this.inventoryItemDAO.getInventoryItemsByCriteria(criterion);
 	}

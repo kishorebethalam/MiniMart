@@ -18,6 +18,33 @@ import com.minimart.annotation.POSModelAnnotation;
 @XmlRootElement
 public class InventoryItem extends POSModel implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3092764055008072741L;
+
+	/**
+	 * @param id
+	 * @param productId
+	 * @param trackingCode
+	 * @param quantity
+	 * @param receivedDate
+	 * @param expiryDate
+	 * @param promotionalOffer
+	 */
+	public InventoryItem(Integer id, Integer productId, String trackingCode,
+			int quantity, Date receivedDate, Date expiryDate,
+			String promotionalOffer) {
+		super();
+		this.id = id;
+		this.productId = productId;
+		this.trackingCode = trackingCode;
+		this.quantity = quantity;
+		this.receivedDate = receivedDate;
+		this.expiryDate = expiryDate;
+		this.promotionalOffer = promotionalOffer;
+	}
+
 	@POSFieldAnnotation(dbColumnName = "id")
 	private Integer id;
 

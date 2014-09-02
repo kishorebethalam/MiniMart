@@ -39,8 +39,7 @@ public class ProductServiceTest {
 
 			//Ensure that it's inserted properly by retrieving and verifying it.
 			Product fetchProduct = service.getProductById(generatedProductId);
-
-			assertEquals(product.toString(), fetchProduct.toString());
+			assertEquals(product, fetchProduct);
 		}
 		
 		//Ensure that all inserts are successful by verifying the size in db post insert.
